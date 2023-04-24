@@ -63,7 +63,10 @@ class Particle:
         if dist_right < self.radius:
             self.x = SCREEN_WIDTH - self.radius
 
+<<<<<<< HEAD
         pass
+=======
+>>>>>>> c36c4f8 (first)
 
 running = True
 clock = pygame.time.Clock()
