@@ -43,8 +43,9 @@ class Particle:
         self.velocity.y = self.velocity.y + GRAVITY * dt
 
     def apply_friction_x(self, friction: float = 0.97):
-        self.velocity.y *= friction * 1 / 60
-        self.velocity.x *= friction * 1 / 60
+        # self.velocity.y *= friction
+        # self.velocity.x *= friction
+
 
     def update_position(self):
         self.position += self.velocity
