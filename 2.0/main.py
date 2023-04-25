@@ -6,7 +6,7 @@ pygame.init()
 
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 500
-GRAVITY = 0.098
+GRAVITY = 9.8
 FPS = 60
 colors = [
     (255, 0, 0),  # red
@@ -71,7 +71,9 @@ clock = pygame.time.Clock()
 particles = []
 
 try:
+    count = 0
     while running:
+        count += 1
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -79,6 +81,8 @@ try:
                 if pygame.mouse.get_pressed()[0]:
                     pos = pygame.mouse.get_pos()
                     particles.append(Particle(20, 50, pos[0], pos[1], initial_x_velocity=random.randint(1, 6)))
+        # if count % 70 == 0:
+        #     particles.append(Particle(20, 50, 50, 50, initial_x_velocity=random.randint(1, 6)))
 
         screen.fill((0, 0, 0))
 
@@ -95,8 +99,6 @@ try:
 
             particles[i].render(screen)
 
-        # Console:
-        print(f"Particles: {len(particles)}")
 
         pygame.display.update()
 
