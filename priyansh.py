@@ -7,7 +7,7 @@ pygame.init()
 
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 500
-GRAVITY = 0.01
+GRAVITY = 9.8
 FPS = 60
 
 colors = [
