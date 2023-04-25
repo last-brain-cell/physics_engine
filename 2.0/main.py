@@ -43,8 +43,6 @@ class Particle:
         self.velocity[0] *= friction
 
     def update_position(self):
-        pygame.draw.circle(screen, (255, 0, 0), (self.x, self.y), 10)
-        print(self.velocity[0])
         self.x += self.velocity[0]
         self.y += self.velocity[1]
 
@@ -62,6 +60,10 @@ class Particle:
             self.x = self.radius
         if dist_right < self.radius:
             self.x = SCREEN_WIDTH - self.radius
+
+    def collision_check(self, particles):
+        pass
+
 
 
 running = True
@@ -85,10 +87,11 @@ try:
             particles[i].apply_friction_x(0.99)
             particles[i].update_position()
             particles[i].stay_in_window()
-            for j in range(len(particles)):
-                if j == i:
-                    continue
-
+            for j in range(i, len(particles)):
+                if -particles[i].radius < particles[i].x - particles[j].x < particles[i].radius:
+                    particles[i].x += particles[i].x - particles[j].x
+                if -particles[i].y < particles[i].y - particles[j].y < particles[i].radius:
+                    particles[i].y += particles[i].y - particles[j].y
 
             particles[i].render(screen)
 
