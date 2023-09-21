@@ -7,7 +7,7 @@ pygame.init()
 
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 500
-GRAVITY = 9.8
+GRAVITY = 0.0991
 FPS = 60
 
 colors = [
@@ -45,6 +45,7 @@ class Particle:
     def apply_friction_x(self, friction: float = 0.97):
         # self.velocity.y *= friction
         # self.velocity.x *= friction
+        pass
 
 
     def update_position(self):
@@ -75,7 +76,6 @@ class Particle:
     def collision_check(self, particles):
         pass
 
-
 running = True
 clock = pygame.time.Clock()
 particles = []
@@ -100,13 +100,13 @@ try:
             particles[i].apply_gravity()
             particles[i].apply_friction_x(0.99)
             # particles[i].update_position()
-            # for j in range(i, len(particles)):
-            # disp = particles[i].position - particles[j].position
-            # print(disp)
-            # print(disp, disp.length())
+            for j in range(i, len(particles)):
+                disp = particles[i].position - particles[j].position
+                print(disp)
+                print(disp, disp.length())
             # WORKS ONLY IF PARTICLES OF SAME RADIUS
             # if disp.length() < particles[i].radius + particles[j].radius:
-            # particles[j].position += math.Vector2(particles[i].radius, particles[i].radius) - disp
+            #     particles[j].position += math.Vector2(particles[i].radius, particles[i].radius) - disp
             particles[i].update_position()
             particles[i].stay_in_window()
             particles[i].render(screen)
